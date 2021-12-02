@@ -1,7 +1,13 @@
 package kimcheon.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import lombok.Data;
 
+@Entity
 @Data
 public class Dish {
     
@@ -28,6 +34,20 @@ public class Dish {
         
     };
 
-    private Type name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+
+    private Type type;
+    private String name;
+
+    public Dish(){super();}
+
+    public Dish(Type type){
+        this();
+        this.type = type;
+        this.name = type.getName();
+    }
 
 }
