@@ -1,12 +1,13 @@
 package kimcheon.domain;
 
 import javax.persistence.Entity;
+/*
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+*/
 import lombok.Data;
-
+import javax.validation.constraints.NotNull;
 @Entity
 @Data
 public class Dish {
@@ -34,12 +35,14 @@ public class Dish {
         
     };
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
+    
+    @NotNull
     private Type type;
+    
     private String name;
 
     public Dish(){super();}
