@@ -1,10 +1,10 @@
-package tacos;
+package kimcheon;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TacosApplicationTests {
+public class KimcheonApplicationTests {
 
 	@Test
 	void contextLoads() {
