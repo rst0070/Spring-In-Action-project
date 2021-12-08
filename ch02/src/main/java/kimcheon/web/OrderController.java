@@ -13,7 +13,7 @@ public class OrderController {
     
     @GetMapping
     public String orderPage(Model model){
-        model.addAttribute("dishTypeArr", Dish.Type.values());//배열 보냄.
+        model.addAttribute("dishes", Dish.Type.values());//배열 보냄.
         return "order";
     }
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" th:href="@{/css/order.css}"/>
+    </head>
+    <body>
+        <h1>주문 및 배송</h1>
+        <form>
+            <div class="menu">
+                <p>원하는 메뉴를 고르세요</p>
+                <div th:each="dish : ${dishes}">
+                    <label th:for="${dish.name}" th:text='${dish.name + " : " + dish.price + "원"}'></label>
+                    <input th:name="${dish.name}" type="checkbox"/>
+                </div>
+            </div>
+            <div>
+                <p>배송정보 입력</p>
+                <div>
+                    
+                </div>
+            </div>
+        </form>
+        
+        
+    </body>
+</html>
