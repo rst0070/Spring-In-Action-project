@@ -8,6 +8,7 @@ __무엇을 알아야하는가?__
 6. __bean validation, domain, controller, view에서 적용하기__
 
 전화번호부에 전화번호를 등록 하는 애플리케이션 만들어보기  
+(등록하는걸 보여주는건 jpa로 사용해보자: ch03)  
 * `InformationDomain` - 전화번호 정보 저장하는 도메인
 * `PhoneBookController` - controller
 * `phonebook-form.html` - view
