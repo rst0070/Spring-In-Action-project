@@ -9,13 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>rst</groupId>
-	<artifactId>kimcheon</artifactId>
+	<artifactId>tryspring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>kimcheon</name>
+	<name>tryspring</name>
 	<description>Spring In Action 5th edition project</description>
 	<properties>
       	<!-- The main class to start by executing "java -jar" -->
-      	<start-class>kimcheon.KimcheonApplication</start-class>
+      	<start-class>tryspring.TrySpringApplication</start-class>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
@@ -74,7 +74,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>kimcheon.KimcheonApplication</mainClass>
+					<mainClass>tryspring.TrySpringApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
