@@ -2,10 +2,11 @@
 __무엇을 알아야하는가?__
 1. domain의 구조, lombok
 2. Spring mvc: controller, model, view 기본
-3. __logging : slf4j__
-4. model을 view에서 보여주기
-5. form 데이터 받기
-6. __bean validation, domain, controller, view에서 적용하기__
+3. controller의 일반적 지정과 WebMvcConfigurer를 이용한 지정
+4. __logging : slf4j__
+5. model을 view에서 보여주기
+6. form 데이터 받기
+7. __bean validation, domain, controller, view에서 적용하기__
 
 전화번호부에 전화번호를 등록 하는 애플리케이션 만들어보기  
 (등록하는걸 보여주는건 jpa로 사용해보자: ch03)  
@@ -24,8 +25,31 @@ __controller__
 메서드에 자신이 대응될 url지정.  
 model은 메서드의 파라미터로 받을 수 있으며 `org.springframework.ui.Model`이다. 이를 이용해 view에 데이터 전달가능.  
   
-## 3. Logging
-### 3.1 Logging에 대한 기본 개념
+## 3. Controller의 지정방법
+
+### 3.1 일반적인 방법
+1. `@Controller`를 이용하여 스프링 컨텍스트가 자동으로 컴포넌트 스캐닝을 통해 빈을 생성
+2. `@RequestMapping`, `@PostMapping`, `@GetMapping`등을 이용해 request 패턴에 따른 반응 지정(method 지정)
+  
+### 3.2 WebMvcConfigurer 이용
+그냥 configuration을 이용하는 방법(직접 bean생성)도 있지만, `WebMvcConfigurer`를 구현하는 방법이있다.  
+`WebMvcConfigurer`는 기본적인 구현을 제공하므로 필요한 부분만 오버라이드하여 작성할 수 있다는 장점이 있다.    
+```java
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry){
+        registry.addViewController("/").setViewName("home");
+    }
+}
+```
+위의 예시에서 `ViewControllerRegistry`를 통해 view controller들을 등록할 수 있다.  
+
+## 4. Logging
+### 4.1 Logging에 대한 기본 개념
 [java brain 영상 참고](https://youtu.be/SWHYrCXIL38)  
 __어떤 방식으로 로그를 남기는가?__  
 애플리케이션에서는 slf4j를 사용하고 slf4j가 다른 로깅 라이브러리를 바인딩하여 사용.  
@@ -45,14 +69,14 @@ slf4j에서는: slf4j를 `api`, logback등을 `binding`이라 한다.
 하지만 레거시 코드와 binding이 같은 라이브러리를 쓴다면 이를 사용할 필요가 없다.  
   
 [slf4j manual 참고 하기](http://www.slf4j.org/manual.html)  
-### 3.2 Spring Boot와 Slf4j
+### 4.2 Spring Boot와 Slf4j
 [java brain : spring boot and slf4j 참고](https://youtu.be/lGrcZsw-hKQ)  
 spring boot에서는 `spring-boot-starter-logging`이 필요하다. `spring boot starter web`은 이를 기본적으로 참조한다.  
 그냥 slf4j를 사용하는것 처럼 사용가능(spring에서는 logback을 기본으로 제공)  
   
 `application.properties`를 이용해 로그 레벨등을 설정할 수 있다.
 
-## 6. bean validation
+## 7. bean validation
 [baeldung.com 문서 참고](https://www.baeldung.com/javax-validation)  
 bean validation은 java bean의 유효성을 검사하는 api 이다. 
 이를 사용하려면 api와 이를 구현한 코드가 필요하다.  
@@ -60,9 +84,12 @@ bean validation은 java bean의 유효성을 검사하는 api 이다.
 * `org.hibernate.validator:hibernate-validator` : hibernate의 validate api 구현 코드
 * `org.glassfish:javax.el` : expression language를 파싱하기 위해 `javax.el` api가 필요한데 org.glassfish의 구현 코드를 사용하는것.
   
-## 7. 마무리
+## 8. 마무리
 * lombok의 다양한 어노테이션 알아봐야겠다.
 * slf4j를 여러번 사용해 봐야할 듯.
 * javax.validation 도 자주 적용해 보기.
 위 세가지는 앞으로도 자주쓰이는 중요한 라이브러리들인것 같다. 
 여러 환경에서 연습해봐야할 것 같다.
+* Model을 사용하지 않고 메서드의 파라미터를 이용해 view에 model을 전달하는 방법이 있다.
+* configuration을 이용하는 방법 알 필요 있음
+* thymeleaf 자세하게 모르겠음

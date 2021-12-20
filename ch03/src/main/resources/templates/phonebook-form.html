@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+    </head>
+    <body>
+        <form method="POST" th:object="${domain}" th:action="@{/}">
+            <label for="name">name</label><br/>
+            <input th:field="*{name}" name="name" type="text" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">이름 입력</span><br/>
+            <label for="email">email</label><br/>
+            <input th:field="*{email}" name="email" type="text" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">*@*.* 형식 으로 입력</span><br/>
+            <label for="phone-number">phone number</label><br/>
+            <input th:field="*{number}" name="phone-number" type="text" />
+            <span th:if="${#fields.hasErrors('number')}" th:errors="*{number}">000-0000-000 형식 으로 입력</span><br/>
+            <input type="submit" />
+        </form>
+    </body>
+</html>
