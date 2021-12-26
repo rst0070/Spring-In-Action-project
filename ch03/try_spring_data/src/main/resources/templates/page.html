@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            section {
+                width: 50em;
+                margin-left: auto;
+                margin-right: auto;
+                border-left: 1px solid black;
+                border-right: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="forClassRoom">
+            <h2>Class Room CRUD</h2>
+            <div class="select">
+                <button>select *</button><br/>
+                <textarea class="result"></textarea>
+            </div>
+            <div class="insert">
+                <input type="number" placeholder="class number"/>
+                <button>make</button><br/>
+                <textarea class="result"></textarea>
+            </div>
+            <div class="update">
+                <input type="number" placeholder="class number you want to change"/>
+                <input type="number" placeholder="new class nunber"/>
+                <button>change</button><br/>
+                <textarea class="result"></textarea>
+            </div>
+            <div class="delete">
+                <input type="number" placeholder="class number you want to delete"/>
+                <button>delete</button><br/>
+                <textarea class="result"></textarea>
+            </div>
+        </section>
+        <section class="forStudent">
+            <div class="select">
+                <button>select *</button><br/>
+                <input type="number" placeholder="class number"/><button>select by class num</button><br/>
+                <input type="text" placeholder="email address"/><button>select by email</button><br/>
+                <textarea class="result"></textarea>
+            </div>
+            <div class="insert">
+                <input type="text" placeholder="name"/><br/>
+                <input type="text" placeholder="email"/><br/>
+                <input type="number" placeholder="class num"/><br/>
+                <button>insert</button><br/>
+                <textarea class="result"></textarea>
+            </div>
+            <div class="update">
+                <input type="text" placeholder="student email address"/><br/>
+                <input type="text" placeholder="name to change"/><br/>
+                <input type="text" placeholder="email to change"/><br/>
+                <input type="number" placeholder="class num to change"/><br/>
+                <button>change</button><br/>
+                <textarea class="result"></textarea>
+            </div>
+            <div class="delete">
+                <input type="text" placeholder="email"/>
+                <button>delete</button>
+                <textarea class="result"></textarea>
+            </div>
+        </section>
+
+        <script>
+        </script>
+    </body>
+</html>
