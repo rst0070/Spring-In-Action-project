@@ -47,3 +47,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
   
 ## ANT Matchers
 [section 참고](https://www.section.io/engineering-education/springboot-antmatchers/#:~:text=The%20antMatchers()%20is%20a,specific%20URLs%20as%20its%20arguments.)
+특정 경로에 대해 권한을 요구하지않는 white list를 만들수 있다.  
+위의 코드에서
+```
+    http
+        .authorizeRequests()
+        .antMathers(
+            "/", "/index"
+        )
+        .permitAll()
+        .anyRequest()   
+        .authenticated()
+        .and()
+        .httpBasic();
+```
+
+## User 만들기

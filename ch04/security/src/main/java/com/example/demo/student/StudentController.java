@@ -24,4 +24,5 @@ public class StudentController {
                 .findFirst()
                 .orElseThrow();
     }
+
 }
